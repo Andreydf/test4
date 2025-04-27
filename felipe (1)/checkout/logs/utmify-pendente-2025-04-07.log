@@ -1,0 +1,457 @@
+[2025-04-07 14:06:38] 📥 Dados recebidos do PayHubr
+Dados: {
+    "raw": "{\"orderId\":98325712,\"platform\":\"SkalePay\",\"paymentMethod\":\"pix\",\"status\":\"waiting_payment\",\"createdAt\":\"2025-04-07 14:06:38\",\"approvedDate\":null,\"refundedAt\":null,\"customer\":{\"name\":\"Clara Barbosa Souza\",\"email\":\"clara.barbosa.souza@email.com\",\"phone\":null,\"document\":\"06749450342\",\"country\":\"BR\",\"ip\":\"2804:14d:5ca2:5a94:15cd:5178:242b:7222\"},\"products\":[{\"id\":\"PROD_67f3dbee085c1\",\"name\":\"Doa\\u00e7\\u00e3o\",\"planId\":null,\"planName\":null,\"quantity\":1,\"priceInCents\":6190}],\"trackingParameters\":{\"utm_source\":\"FB\",\"utm_medium\":\"SIGMABOY|120219999282530295\",\"utm_campaign\":\"[Gov] Ctv5 \\u2014 C\\u00f3pia|120219999281700295\",\"utm_content\":\"Novo an\\u00fancio de Vendas|120219999281490295\",\"utm_term\":\"Facebook_Desktop_Feed\",\"xcod\":\"FBhQwK21wXxR[Gov] Ctv5 \\u2014 C\\u00f3pia|120219999281700295hQwK21wXxRSIGMABOY|120219999282530295hQwK21wXxRNovo an\\u00fancio de Vendas|120219999281490295hQwK21wXxRFacebook_Desktop_Feed\",\"utm_id\":\"120219999281700295\"},\"commission\":{\"totalPriceInCents\":6190,\"gatewayFeeInCents\":100,\"userCommissionInCents\":6190},\"isTest\":false}"
+}
+----------------------------------------
+[2025-04-07 14:06:38] 🔄 Processando dados recebidos
+Dados: {
+    "orderId": 98325712,
+    "platform": "SkalePay",
+    "paymentMethod": "pix",
+    "status": "waiting_payment",
+    "createdAt": "2025-04-07 14:06:38",
+    "approvedDate": null,
+    "refundedAt": null,
+    "customer": {
+        "name": "Clara Barbosa Souza",
+        "email": "clara.barbosa.souza@email.com",
+        "phone": null,
+        "document": "06749450342",
+        "country": "BR",
+        "ip": "2804:14d:5ca2:5a94:15cd:5178:242b:7222"
+    },
+    "products": [
+        {
+            "id": "PROD_67f3dbee085c1",
+            "name": "Doa\u00e7\u00e3o",
+            "planId": null,
+            "planName": null,
+            "quantity": 1,
+            "priceInCents": 6190
+        }
+    ],
+    "trackingParameters": {
+        "utm_source": "FB",
+        "utm_medium": "SIGMABOY|120219999282530295",
+        "utm_campaign": "[Gov] Ctv5 \u2014 C\u00f3pia|120219999281700295",
+        "utm_content": "Novo an\u00fancio de Vendas|120219999281490295",
+        "utm_term": "Facebook_Desktop_Feed",
+        "xcod": "FBhQwK21wXxR[Gov] Ctv5 \u2014 C\u00f3pia|120219999281700295hQwK21wXxRSIGMABOY|120219999282530295hQwK21wXxRNovo an\u00fancio de Vendas|120219999281490295hQwK21wXxRFacebook_Desktop_Feed",
+        "utm_id": "120219999281700295"
+    },
+    "commission": {
+        "totalPriceInCents": 6190,
+        "gatewayFeeInCents": 100,
+        "userCommissionInCents": 6190
+    },
+    "isTest": false
+}
+----------------------------------------
+[2025-04-07 14:06:38] 📤 Dados formatados para Utmify
+Dados: {
+    "orderId": 98325712,
+    "platform": "PayHubr",
+    "paymentMethod": "pix",
+    "status": "waiting_payment",
+    "createdAt": "2025-04-07 14:06:38",
+    "approvedDate": null,
+    "refundedAt": null,
+    "customer": {
+        "name": "Clara Barbosa Souza",
+        "email": "clara.barbosa.souza@email.com",
+        "phone": null,
+        "document": "06749450342",
+        "country": "BR",
+        "ip": "2a02:4780:13:1234::99"
+    },
+    "products": [
+        {
+            "id": "PROD_67f3dbee085c1",
+            "name": "Doa\u00e7\u00e3o",
+            "planId": null,
+            "planName": null,
+            "quantity": 1,
+            "priceInCents": 6190
+        }
+    ],
+    "trackingParameters": {
+        "src": null,
+        "sck": null,
+        "utm_source": "FB",
+        "utm_campaign": "[Gov] Ctv5 \u2014 C\u00f3pia|120219999281700295",
+        "utm_medium": "SIGMABOY|120219999282530295",
+        "utm_content": "Novo an\u00fancio de Vendas|120219999281490295",
+        "utm_term": "Facebook_Desktop_Feed",
+        "xcod": "FBhQwK21wXxR[Gov] Ctv5 \u2014 C\u00f3pia|120219999281700295hQwK21wXxRSIGMABOY|120219999282530295hQwK21wXxRNovo an\u00fancio de Vendas|120219999281490295hQwK21wXxRFacebook_Desktop_Feed",
+        "fbclid": null,
+        "gclid": null,
+        "ttclid": null
+    },
+    "commission": {
+        "totalPriceInCents": 6190,
+        "gatewayFeeInCents": 100,
+        "userCommissionInCents": 6190
+    },
+    "isTest": false
+}
+----------------------------------------
+[2025-04-07 14:06:38] 📡 Enviando requisição para Utmify
+Dados: {
+    "url": "https:\/\/api.utmify.com.br\/api-credentials\/orders",
+    "headers": [
+        "Content-Type: application\/json",
+        "x-api-token: [REDACTED]"
+    ]
+}
+----------------------------------------
+[2025-04-07 14:06:38] ✅ Resposta da API Utmify
+Dados: {
+    "http_code": 200,
+    "response": {
+        "OK": true,
+        "data": [],
+        "result": "SUCCESS"
+    }
+}
+----------------------------------------
+[2025-04-07 16:18:46] 📥 Dados recebidos do PayHubr
+Dados: {
+    "raw": "{\"orderId\":98358694,\"platform\":\"SkalePay\",\"paymentMethod\":\"pix\",\"status\":\"waiting_payment\",\"createdAt\":\"2025-04-07 16:18:46\",\"approvedDate\":null,\"refundedAt\":null,\"customer\":{\"name\":\"Maria Almeida Vieira\",\"email\":\"maria.almeida.vieira@email.com\",\"phone\":null,\"document\":\"22237763968\",\"country\":\"BR\",\"ip\":\"2804:d45:b92b:2e00:e464:9c:e38e:6174\"},\"products\":[{\"id\":\"PROD_67f3fae697648\",\"name\":\"Doa\\u00e7\\u00e3o\",\"planId\":null,\"planName\":null,\"quantity\":1,\"priceInCents\":6190}],\"trackingParameters\":{\"utm_source\":\"FB\",\"utm_medium\":\"SIGMABOY|120219999282530295\",\"utm_campaign\":\"[Gov] Ctv5 \\u2014 C\\u00f3pia|120219999281700295\",\"utm_content\":\"Novo an\\u00fancio de Vendas|120219999281490295\",\"utm_term\":\"Facebook_Desktop_Feed\",\"xcod\":\"FBhQwK21wXxR[Gov] Ctv5 \\u2014 C\\u00f3pia|120219999281700295hQwK21wXxRSIGMABOY|120219999282530295hQwK21wXxRNovo an\\u00fancio de Vendas|120219999281490295hQwK21wXxRFacebook_\"},\"commission\":{\"totalPriceInCents\":6190,\"gatewayFeeInCents\":100,\"userCommissionInCents\":6190},\"isTest\":false}"
+}
+----------------------------------------
+[2025-04-07 16:18:46] 🔄 Processando dados recebidos
+Dados: {
+    "orderId": 98358694,
+    "platform": "SkalePay",
+    "paymentMethod": "pix",
+    "status": "waiting_payment",
+    "createdAt": "2025-04-07 16:18:46",
+    "approvedDate": null,
+    "refundedAt": null,
+    "customer": {
+        "name": "Maria Almeida Vieira",
+        "email": "maria.almeida.vieira@email.com",
+        "phone": null,
+        "document": "22237763968",
+        "country": "BR",
+        "ip": "2804:d45:b92b:2e00:e464:9c:e38e:6174"
+    },
+    "products": [
+        {
+            "id": "PROD_67f3fae697648",
+            "name": "Doa\u00e7\u00e3o",
+            "planId": null,
+            "planName": null,
+            "quantity": 1,
+            "priceInCents": 6190
+        }
+    ],
+    "trackingParameters": {
+        "utm_source": "FB",
+        "utm_medium": "SIGMABOY|120219999282530295",
+        "utm_campaign": "[Gov] Ctv5 \u2014 C\u00f3pia|120219999281700295",
+        "utm_content": "Novo an\u00fancio de Vendas|120219999281490295",
+        "utm_term": "Facebook_Desktop_Feed",
+        "xcod": "FBhQwK21wXxR[Gov] Ctv5 \u2014 C\u00f3pia|120219999281700295hQwK21wXxRSIGMABOY|120219999282530295hQwK21wXxRNovo an\u00fancio de Vendas|120219999281490295hQwK21wXxRFacebook_"
+    },
+    "commission": {
+        "totalPriceInCents": 6190,
+        "gatewayFeeInCents": 100,
+        "userCommissionInCents": 6190
+    },
+    "isTest": false
+}
+----------------------------------------
+[2025-04-07 16:18:46] 📤 Dados formatados para Utmify
+Dados: {
+    "orderId": 98358694,
+    "platform": "PayHubr",
+    "paymentMethod": "pix",
+    "status": "waiting_payment",
+    "createdAt": "2025-04-07 16:18:46",
+    "approvedDate": null,
+    "refundedAt": null,
+    "customer": {
+        "name": "Maria Almeida Vieira",
+        "email": "maria.almeida.vieira@email.com",
+        "phone": null,
+        "document": "22237763968",
+        "country": "BR",
+        "ip": "2a02:4780:13:1234::99"
+    },
+    "products": [
+        {
+            "id": "PROD_67f3fae697648",
+            "name": "Doa\u00e7\u00e3o",
+            "planId": null,
+            "planName": null,
+            "quantity": 1,
+            "priceInCents": 6190
+        }
+    ],
+    "trackingParameters": {
+        "src": null,
+        "sck": null,
+        "utm_source": "FB",
+        "utm_campaign": "[Gov] Ctv5 \u2014 C\u00f3pia|120219999281700295",
+        "utm_medium": "SIGMABOY|120219999282530295",
+        "utm_content": "Novo an\u00fancio de Vendas|120219999281490295",
+        "utm_term": "Facebook_Desktop_Feed",
+        "xcod": "FBhQwK21wXxR[Gov] Ctv5 \u2014 C\u00f3pia|120219999281700295hQwK21wXxRSIGMABOY|120219999282530295hQwK21wXxRNovo an\u00fancio de Vendas|120219999281490295hQwK21wXxRFacebook_",
+        "fbclid": null,
+        "gclid": null,
+        "ttclid": null
+    },
+    "commission": {
+        "totalPriceInCents": 6190,
+        "gatewayFeeInCents": 100,
+        "userCommissionInCents": 6190
+    },
+    "isTest": false
+}
+----------------------------------------
+[2025-04-07 16:18:46] 📡 Enviando requisição para Utmify
+Dados: {
+    "url": "https:\/\/api.utmify.com.br\/api-credentials\/orders",
+    "headers": [
+        "Content-Type: application\/json",
+        "x-api-token: [REDACTED]"
+    ]
+}
+----------------------------------------
+[2025-04-07 16:18:46] ✅ Resposta da API Utmify
+Dados: {
+    "http_code": 200,
+    "response": {
+        "OK": true,
+        "data": [],
+        "result": "SUCCESS"
+    }
+}
+----------------------------------------
+[2025-04-07 16:28:48] 📥 Dados recebidos do PayHubr
+Dados: {
+    "raw": "{\"orderId\":98361266,\"platform\":\"SkalePay\",\"paymentMethod\":\"pix\",\"status\":\"waiting_payment\",\"createdAt\":\"2025-04-07 16:28:48\",\"approvedDate\":null,\"refundedAt\":null,\"customer\":{\"name\":\"Beatriz Oliveira Oliveira\",\"email\":\"beatriz.oliveira.oliveira@email.com\",\"phone\":null,\"document\":\"05031098430\",\"country\":\"BR\",\"ip\":\"2804:14d:5ca2:5a94:15cd:5178:242b:7222\"},\"products\":[{\"id\":\"PROD_67f3fd400a432\",\"name\":\"Doa\\u00e7\\u00e3o\",\"planId\":null,\"planName\":null,\"quantity\":1,\"priceInCents\":2000}],\"trackingParameters\":{\"utm_source\":\"FB\",\"utm_medium\":\"SIGMABOY|120219999282530295\",\"utm_campaign\":\"[Gov] Ctv5 \\u2014 C\\u00f3pia|120219999281700295\",\"utm_content\":\"Novo an\\u00fancio de Vendas|120219999281490295\",\"utm_term\":\"Facebook_Desktop_Feed\",\"xcod\":\"FBhQwK21wXxR[Gov] Ctv5 \\u2014 C\\u00f3pia|120219999281700295hQwK21wXxRSIGMABOY|120219999282530295hQwK21wXxRNovo an\\u00fancio de Vendas|120219999281490295hQwK21wXxRFacebook_Desktop_Feed\",\"sck\":\"FBhQwK21wXxR[Gov] Ctv5 \\u2014 C\\u00f3pia|120219999281700295hQwK21wXxRSIGMABOY|120219999282530295hQwK21wXxRNovo an\\u00fancio de Vendas|120219999281490295hQwK21wXxRFacebook_Desktop_Feed\"},\"commission\":{\"totalPriceInCents\":2000,\"gatewayFeeInCents\":100,\"userCommissionInCents\":2000},\"isTest\":false}"
+}
+----------------------------------------
+[2025-04-07 16:28:48] 🔄 Processando dados recebidos
+Dados: {
+    "orderId": 98361266,
+    "platform": "SkalePay",
+    "paymentMethod": "pix",
+    "status": "waiting_payment",
+    "createdAt": "2025-04-07 16:28:48",
+    "approvedDate": null,
+    "refundedAt": null,
+    "customer": {
+        "name": "Beatriz Oliveira Oliveira",
+        "email": "beatriz.oliveira.oliveira@email.com",
+        "phone": null,
+        "document": "05031098430",
+        "country": "BR",
+        "ip": "2804:14d:5ca2:5a94:15cd:5178:242b:7222"
+    },
+    "products": [
+        {
+            "id": "PROD_67f3fd400a432",
+            "name": "Doa\u00e7\u00e3o",
+            "planId": null,
+            "planName": null,
+            "quantity": 1,
+            "priceInCents": 2000
+        }
+    ],
+    "trackingParameters": {
+        "utm_source": "FB",
+        "utm_medium": "SIGMABOY|120219999282530295",
+        "utm_campaign": "[Gov] Ctv5 \u2014 C\u00f3pia|120219999281700295",
+        "utm_content": "Novo an\u00fancio de Vendas|120219999281490295",
+        "utm_term": "Facebook_Desktop_Feed",
+        "xcod": "FBhQwK21wXxR[Gov] Ctv5 \u2014 C\u00f3pia|120219999281700295hQwK21wXxRSIGMABOY|120219999282530295hQwK21wXxRNovo an\u00fancio de Vendas|120219999281490295hQwK21wXxRFacebook_Desktop_Feed",
+        "sck": "FBhQwK21wXxR[Gov] Ctv5 \u2014 C\u00f3pia|120219999281700295hQwK21wXxRSIGMABOY|120219999282530295hQwK21wXxRNovo an\u00fancio de Vendas|120219999281490295hQwK21wXxRFacebook_Desktop_Feed"
+    },
+    "commission": {
+        "totalPriceInCents": 2000,
+        "gatewayFeeInCents": 100,
+        "userCommissionInCents": 2000
+    },
+    "isTest": false
+}
+----------------------------------------
+[2025-04-07 16:28:48] 📤 Dados formatados para Utmify
+Dados: {
+    "orderId": 98361266,
+    "platform": "PayHubr",
+    "paymentMethod": "pix",
+    "status": "waiting_payment",
+    "createdAt": "2025-04-07 16:28:48",
+    "approvedDate": null,
+    "refundedAt": null,
+    "customer": {
+        "name": "Beatriz Oliveira Oliveira",
+        "email": "beatriz.oliveira.oliveira@email.com",
+        "phone": null,
+        "document": "05031098430",
+        "country": "BR",
+        "ip": "2a02:4780:13:1234::99"
+    },
+    "products": [
+        {
+            "id": "PROD_67f3fd400a432",
+            "name": "Doa\u00e7\u00e3o",
+            "planId": null,
+            "planName": null,
+            "quantity": 1,
+            "priceInCents": 2000
+        }
+    ],
+    "trackingParameters": {
+        "src": null,
+        "sck": "FBhQwK21wXxR[Gov] Ctv5 \u2014 C\u00f3pia|120219999281700295hQwK21wXxRSIGMABOY|120219999282530295hQwK21wXxRNovo an\u00fancio de Vendas|120219999281490295hQwK21wXxRFacebook_Desktop_Feed",
+        "utm_source": "FB",
+        "utm_campaign": "[Gov] Ctv5 \u2014 C\u00f3pia|120219999281700295",
+        "utm_medium": "SIGMABOY|120219999282530295",
+        "utm_content": "Novo an\u00fancio de Vendas|120219999281490295",
+        "utm_term": "Facebook_Desktop_Feed",
+        "xcod": "FBhQwK21wXxR[Gov] Ctv5 \u2014 C\u00f3pia|120219999281700295hQwK21wXxRSIGMABOY|120219999282530295hQwK21wXxRNovo an\u00fancio de Vendas|120219999281490295hQwK21wXxRFacebook_Desktop_Feed",
+        "fbclid": null,
+        "gclid": null,
+        "ttclid": null
+    },
+    "commission": {
+        "totalPriceInCents": 2000,
+        "gatewayFeeInCents": 100,
+        "userCommissionInCents": 2000
+    },
+    "isTest": false
+}
+----------------------------------------
+[2025-04-07 16:28:48] 📡 Enviando requisição para Utmify
+Dados: {
+    "url": "https:\/\/api.utmify.com.br\/api-credentials\/orders",
+    "headers": [
+        "Content-Type: application\/json",
+        "x-api-token: [REDACTED]"
+    ]
+}
+----------------------------------------
+[2025-04-07 16:28:48] ✅ Resposta da API Utmify
+Dados: {
+    "http_code": 200,
+    "response": {
+        "OK": true,
+        "data": [],
+        "result": "SUCCESS"
+    }
+}
+----------------------------------------
+[2025-04-07 16:30:04] 📥 Dados recebidos do PayHubr
+Dados: {
+    "raw": "{\"orderId\":98361596,\"platform\":\"SkalePay\",\"paymentMethod\":\"pix\",\"status\":\"waiting_payment\",\"createdAt\":\"2025-04-07 16:30:04\",\"approvedDate\":null,\"refundedAt\":null,\"customer\":{\"name\":\"Felipe Barbosa Barbosa\",\"email\":\"felipe.barbosa.barbosa@email.com\",\"phone\":null,\"document\":\"97105740868\",\"country\":\"BR\",\"ip\":\"2804:d45:b92b:2e00:e5b2:e363:92ca:309c\"},\"products\":[{\"id\":\"PROD_67f3fd8cc3721\",\"name\":\"Doa\\u00e7\\u00e3o\",\"planId\":null,\"planName\":null,\"quantity\":1,\"priceInCents\":2000}],\"trackingParameters\":{\"utm_source\":\"organic\"},\"commission\":{\"totalPriceInCents\":2000,\"gatewayFeeInCents\":100,\"userCommissionInCents\":2000},\"isTest\":false}"
+}
+----------------------------------------
+[2025-04-07 16:30:04] 🔄 Processando dados recebidos
+Dados: {
+    "orderId": 98361596,
+    "platform": "SkalePay",
+    "paymentMethod": "pix",
+    "status": "waiting_payment",
+    "createdAt": "2025-04-07 16:30:04",
+    "approvedDate": null,
+    "refundedAt": null,
+    "customer": {
+        "name": "Felipe Barbosa Barbosa",
+        "email": "felipe.barbosa.barbosa@email.com",
+        "phone": null,
+        "document": "97105740868",
+        "country": "BR",
+        "ip": "2804:d45:b92b:2e00:e5b2:e363:92ca:309c"
+    },
+    "products": [
+        {
+            "id": "PROD_67f3fd8cc3721",
+            "name": "Doa\u00e7\u00e3o",
+            "planId": null,
+            "planName": null,
+            "quantity": 1,
+            "priceInCents": 2000
+        }
+    ],
+    "trackingParameters": {
+        "utm_source": "organic"
+    },
+    "commission": {
+        "totalPriceInCents": 2000,
+        "gatewayFeeInCents": 100,
+        "userCommissionInCents": 2000
+    },
+    "isTest": false
+}
+----------------------------------------
+[2025-04-07 16:30:04] 📤 Dados formatados para Utmify
+Dados: {
+    "orderId": 98361596,
+    "platform": "PayHubr",
+    "paymentMethod": "pix",
+    "status": "waiting_payment",
+    "createdAt": "2025-04-07 16:30:04",
+    "approvedDate": null,
+    "refundedAt": null,
+    "customer": {
+        "name": "Felipe Barbosa Barbosa",
+        "email": "felipe.barbosa.barbosa@email.com",
+        "phone": null,
+        "document": "97105740868",
+        "country": "BR",
+        "ip": "2a02:4780:13:1234::99"
+    },
+    "products": [
+        {
+            "id": "PROD_67f3fd8cc3721",
+            "name": "Doa\u00e7\u00e3o",
+            "planId": null,
+            "planName": null,
+            "quantity": 1,
+            "priceInCents": 2000
+        }
+    ],
+    "trackingParameters": {
+        "src": null,
+        "sck": null,
+        "utm_source": "organic",
+        "utm_campaign": null,
+        "utm_medium": null,
+        "utm_content": null,
+        "utm_term": null,
+        "xcod": null,
+        "fbclid": null,
+        "gclid": null,
+        "ttclid": null
+    },
+    "commission": {
+        "totalPriceInCents": 2000,
+        "gatewayFeeInCents": 100,
+        "userCommissionInCents": 2000
+    },
+    "isTest": false
+}
+----------------------------------------
+[2025-04-07 16:30:04] 📡 Enviando requisição para Utmify
+Dados: {
+    "url": "https:\/\/api.utmify.com.br\/api-credentials\/orders",
+    "headers": [
+        "Content-Type: application\/json",
+        "x-api-token: [REDACTED]"
+    ]
+}
+----------------------------------------
+[2025-04-07 16:30:04] ✅ Resposta da API Utmify
+Dados: {
+    "http_code": 200,
+    "response": {
+        "OK": true,
+        "data": [],
+        "result": "SUCCESS"
+    }
+}
+----------------------------------------

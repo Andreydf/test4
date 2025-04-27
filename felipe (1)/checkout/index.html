@@ -1,0 +1,693 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+
+   
+    <script>
+        window.pixelId = "680e3f0e730067ccb5a2ca03";
+        var a = document.createElement("script");
+        a.setAttribute("async", "");
+        a.setAttribute("defer", "");
+        a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+        document.head.appendChild(a);
+      </script>
+
+
+<!-- End Google Tag Manager -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento PIX</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f3f4f6;
+            min-height: 100vh;
+        }
+
+        /* Estilos da tela de loading */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading-logo {
+            max-width: 200px;
+            max-height: 100px;
+            margin-bottom: 30px;
+            object-fit: contain;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #2aca68;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        .loading-text {
+            text-align: center;
+            color: #2aca68;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Seus estilos existentes */
+        .top-bar {
+            background-color: white;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 12px 0;
+        }
+
+        .top-bar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 32px;
+        }
+
+        .secure-badge {
+            display: flex;
+            align-items: center;
+            color: #2aca68;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .secure-badge svg {
+            margin-right: 8px;
+        }
+
+        .container {
+            max-width: 28rem;
+            margin: 0 auto;
+            padding: 16px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.1);
+            padding: 24px;
+            margin-top: 16px;
+            border-top: 4px solid #2aca68;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 16px;
+            color: #2aca68;
+        }
+
+        .timer {
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+
+        .timer span {
+            color: #ef4444;
+            font-weight: bold;
+        }
+
+        .info-box {
+            background-color: #eefbf4;
+            border: 1px solid #bbefd0;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 24px;
+        }
+
+        .info-box p {
+            color: #116639;
+            font-size: 14px;
+        }
+
+        .pix-value {
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .pix-value-label {
+            color: #6b7280;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .pix-amount {
+            color: #2aca68;
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .pix-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            background-color: #f9fafb;
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+
+        .copy-button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background-color: #2aca68;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s;
+            text-align: center;
+        }
+
+        .copy-button:hover {
+            background-color: #1fb058;
+        }
+
+        .copy-button svg {
+            margin-right: 8px;
+        }
+
+        .instructions {
+            margin-top: 32px;
+        }
+
+        .instruction-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .instruction-item svg {
+            flex-shrink: 0;
+            color: #6b7280;
+        }
+
+        .instruction-text {
+            color: #6b7280;
+        }
+
+        .status {
+            margin-top: 32px;
+            color: #6b7280;
+            font-style: italic;
+        }
+
+        .animate-dots::after {
+            content: '...';
+            animation: dots 1.5s steps(4, end) infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: ''; }
+            40% { content: '.'; }
+            60% { content: '..'; }
+            80% { content: '...'; }
+        }
+
+        .divider {
+            border-top: 1px solid #e5e7eb;
+            margin: 32px 0;
+        }
+        
+        /* Inicialmente esconder todo o conteúdo principal */
+        .main-content {
+            display: none;
+        }
+
+        /* Barra de progresso */
+        .progress-bar-container {
+            margin: 20px 0;
+            background-color: #f3f4f6;
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: #2aca68;
+            width: 100%;
+            border-radius: 3px;
+        }
+
+        /* Texto do tempo restante */
+        .countdown-label {
+            display: block;
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 5px;
+        }
+    </style>
+    <script src="js/latest_1.js" data-utmify-prevent-subids="" async="" defer=""></script>
+</head>
+
+<body cz-shortcut-listen="true">
+
+    <!-- Tela de loading -->
+    <div id="loading-screen" class="loading-screen">
+        <img src="images/logo.svg" alt="Logo" class="loading-logo">
+        <div class="spinner"></div>
+        <div class="loading-text">Gerando seu pagamento PIX...</div>
+    </div>
+
+    <!-- Conteúdo principal -->
+    <div id="main-content" class="main-content">
+        <div class="top-bar">
+            <div class="top-bar-content">
+                <img src="images/logo.svg" alt="Logo" class="logo">
+                <div class="secure-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 12l2 2 4-4"></path>
+                        <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <span>Ambiente seguro</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="card">
+                <div class="text-center">
+                    <h1 class="title">Finalizar pagamento</h1>
+                </div>
+
+                <div class="info-box">
+                    <p>Você está prestes a finalizar seu pagamento. Siga as instruções abaixo para concluir a transação com PIX.</p>
+                </div>
+
+                <div class="progress-bar-container">
+                    <div class="progress-bar"></div>
+                </div>
+
+                <div class="pix-value">
+                    <p class="pix-value-label">Valor a pagar:</p>
+                    <p class="pix-amount"></p>
+                </div>
+
+                <div id="qrcode-container" style="text-align: center; margin: 20px 0;">
+                    <img id="qrcode-image" src="" alt="QR Code PIX" style="max-width: 200px; margin: 0 auto; display: none;">
+                </div>
+
+                <div>
+                    <input type="text" class="pix-input" value="" readonly="" id="pixCopiaCola">
+                    <div id="copyButton" class="copy-button">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+                        </svg>
+                        <span>COPIAR CÓDIGO PIX</span>
+                    </div>
+                </div>
+
+                <!-- Elemento para exibir a contagem regressiva -->
+                <div style="text-align: center; margin-top: 20px;">
+                    <span class="countdown-label">Tempo restante para pagamento:</span>
+                    <div id="countdown" style="font-size: 20px; font-weight: bold; color: #2aca68;"></div>
+                </div>
+
+                <div class="instructions">
+                    <h2 class="title">Como pagar com PIX</h2>
+                    <div class="instruction-item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2aca68" stroke-width="2">
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                            <path d="M12 18h.01"></path>
+                        </svg>
+                        <p class="instruction-text">Copie o código PIX acima.</p>
+                    </div>
+                    <div class="instruction-item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2aca68" stroke-width="2">
+                            <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            <path d="M9 12l2 2 4-4"></path>
+                        </svg>
+                        <p class="instruction-text">Abra o aplicativo do seu banco e acesse a área do PIX.</p>
+                    </div>
+                    <div class="instruction-item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2aca68" stroke-width="2">
+                            <polyline points="9 11 12 14 22 4"></polyline>
+                            <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
+                        </svg>
+                        <p class="instruction-text">Escolha a opção "PIX Copia e Cola" e cole o código.</p>
+                    </div>
+                  
+                    <div class="instruction-item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2aca68" stroke-width="2">
+                            <polyline points="9 11 12 14 22 4"></polyline>
+                            <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
+                        </svg>
+                        <p class="instruction-text">Confirme os dados e finalize o pagamento. A confirmação será automática.</p>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Função para mostrar o conteúdo principal e esconder a tela de loading
+        function hideLoading() {
+            document.getElementById('loading-screen').classList.add('hidden');
+            setTimeout(function() {
+                document.getElementById('loading-screen').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+            }, 500); // 500ms para a animação de fade out completar
+        }
+        
+        // Função para obter parâmetros da URL
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)'),
+                results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+    
+        // Função de contagem regressiva (30 minutos = 1800 segundos)
+        function startTimer(duration) {
+            let timer = duration;
+            const countdownElement = document.getElementById('countdown');
+            
+            const interval = setInterval(() => {
+                const minutes = Math.floor(timer / 60);
+                const seconds = timer % 60;
+
+                countdownElement.textContent = minutes.toString().padStart(2, '0') + ':' + 
+                                               seconds.toString().padStart(2, '0');
+
+                if (--timer < 0) {
+                    clearInterval(interval);
+                    countdownElement.textContent = '00:00';
+                }
+            }, 1000);
+        }
+
+        // Função para copiar o código PIX
+        function setupCopyButton() {
+            document.getElementById('copyButton').addEventListener('click', async () => {
+                const pixCode = document.getElementById('pixCopiaCola').value;
+                try {
+                    await navigator.clipboard.writeText(pixCode);
+                    const button = document.getElementById('copyButton');
+                    const originalContent = button.innerHTML;
+                    button.innerHTML = `
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>Copiado!</span>
+                    `;
+                    button.style.backgroundColor = '#1fb058';
+                    setTimeout(() => {
+                        button.innerHTML = originalContent;
+                        button.style.backgroundColor = '#2aca68';
+                    }, 2000);
+                } catch (err) {
+                    console.error('Falha ao copiar:', err);
+                }
+            });
+        }
+
+        // Gerar pagamento quando a página carregar
+        document.addEventListener('DOMContentLoaded', function () {
+            // Configurar botão de cópia
+            setupCopyButton();
+            
+            // Configurar toastr
+            if (typeof toastr !== 'undefined') {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    positionClass: "toast-top-right",
+                    timeOut: 5000
+                };
+            }
+            
+            const valorParam = getUrlParameter('valor');
+            let valor = 6190;
+            
+            if (valorParam) {
+                valor = parseInt(valorParam);
+                // Formatar o valor para exibição como moeda brasileira
+                const valorFormatado = (valor / 100).toLocaleString('pt-BR', {
+                    style: 'currency', 
+                    currency: 'BRL'
+                });
+                document.querySelector('.pix-amount').textContent = valorFormatado;
+            } else {
+                // Formatar o valor padrão
+                const valorFormatado = (valor / 100).toLocaleString('pt-BR', {
+                    style: 'currency', 
+                    currency: 'BRL'
+                });
+                document.querySelector('.pix-amount').textContent = valorFormatado;
+            }
+
+            // Verificar se já existe um pagamento salvo no localStorage
+            const savedPayment = JSON.parse(localStorage.getItem('savedPayment'));
+            
+            // Verificar se o valor atual é o mesmo do pagamento salvo
+            const isSameValue = savedPayment && savedPayment.valor === valor;
+            
+            if (savedPayment && isSameValue) {
+                console.log('✅ Utilizando pagamento existente do cache');
+                console.log('📊 Token de transação:', savedPayment.token);
+                console.log('💰 Valor do PIX:', (valor / 100).toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                }));
+                
+                // Preencher os dados da interface com os dados salvos
+                document.getElementById('pixCopiaCola').value = savedPayment.pixCopiaECola;
+                
+                // Exibir o QR Code
+                const qrCodeImg = document.getElementById('qrcode-image');
+                if (savedPayment.qrCodeUrl) {
+                    qrCodeImg.src = savedPayment.qrCodeUrl;
+                    qrCodeImg.style.display = 'block';
+                    
+                    // Quando a imagem do QR code estiver carregada, esconder a tela de loading
+                    qrCodeImg.onload = function() {
+                        // Inicia o timer quando o conteúdo estiver visível
+                        startTimer(1800);
+                        // Esconde a tela de loading
+                        hideLoading();
+                    };
+                } else {
+                    // Se não tiver QR code, esconder a tela de loading mesmo assim
+                    startTimer(1800);
+                    hideLoading();
+                }
+                
+                // Iniciar verificação do pagamento
+                if (savedPayment.token) {
+                    // Verificar o status do pagamento a cada 3 segundos
+                    setInterval(function() {
+                        verifyPayment(savedPayment.token);
+                    }, 3000);
+                }
+            } else {
+                // Se não houver pagamento salvo ou o valor for diferente, gerar um novo
+                generateNewPayment(valor);
+            }
+        });
+
+        // Função para gerar um novo pagamento
+        function generateNewPayment(valor) {
+            console.log('🔄 Gerando novo pagamento...');
+            
+            // Capturar parâmetros UTM da URL
+            const utmParams = {
+                utm_source: getUrlParameter('utm_source'),
+                utm_medium: getUrlParameter('utm_medium'),
+                utm_campaign: getUrlParameter('utm_campaign'),
+                utm_content: getUrlParameter('utm_content'),
+                utm_term: getUrlParameter('utm_term'),
+                xcod: getUrlParameter('xcod'),
+                sck: getUrlParameter('sck'),
+                utm_id: getUrlParameter('utm_id')
+            };
+            
+            console.log('📊 Parâmetros UTM capturados:', utmParams);
+            
+            // Fazer requisição para gerar o pagamento
+            fetch('pagamento.php?valor=' + valor, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(utmParams)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Mostrar logs no console
+                        console.log('✅ Pagamento gerado com sucesso!');
+                        console.log('📊 Token de transação:', data.paymentId);
+                        console.log('💰 Valor do PIX:', (valor / 100).toLocaleString('pt-BR', {
+                            style: 'currency',
+                            currency: 'BRL'
+                        }));
+                        
+                        // Exibir logs detalhados se estiverem disponíveis
+                        if (data.logs) {
+                            console.log('📋 Detalhes da transação:');
+                            console.log(data.logs);
+                        }
+                        
+                        // Se houver resultado completo da API, exibir no console
+                        if (data.result) {
+                            console.log('🔍 Resposta completa da API:');
+                            console.log(data.result);
+                        }
+                        
+                        // Salvar o pagamento no localStorage
+                        const paymentData = {
+                            token: data.paymentId,
+                            pixCopiaECola: data.pixCopiaECola,
+                            qrCodeUrl: data.qrCodeUrl,
+                            valor: valor,
+                            timestamp: new Date().getTime()
+                        };
+                        localStorage.setItem('savedPayment', JSON.stringify(paymentData));
+                        
+                        // Preencher o campo com o código PIX
+                        document.getElementById('pixCopiaCola').value = data.pixCopiaECola;
+                        
+                        // Exibir o QR Code
+                        const qrCodeImg = document.getElementById('qrcode-image');
+                        if (data.qrCodeUrl) {
+                            qrCodeImg.src = data.qrCodeUrl;
+                            qrCodeImg.style.display = 'block';
+                            
+                            // Quando a imagem do QR code estiver carregada, esconder a tela de loading
+                            qrCodeImg.onload = function() {
+                                // Inicia o timer quando o conteúdo estiver visível
+                                startTimer(1800);
+                                // Esconde a tela de loading
+                                hideLoading();
+                            };
+                        } else {
+                            // Se não tiver QR code, esconder a tela de loading mesmo assim após um breve delay
+                            setTimeout(function() {
+                                startTimer(1800);
+                                hideLoading();
+                            }, 1000);
+                        }
+                        
+                        // Iniciar verificação do pagamento
+                        const token = data.paymentId;
+                        if (token) {
+                            // Verificar o status do pagamento a cada 3 segundos
+                            setInterval(function() {
+                                verifyPayment(token);
+                            }, 3000);
+                        }
+                    } else {
+                        console.error('Erro ao gerar pagamento:', data.message);
+                        // Mesmo com erro, esconder a tela de loading após alguns segundos
+                        setTimeout(function() {
+                            hideLoading();
+                        }, 3000);
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro na requisição:', error);
+                    // Mesmo com erro, esconder a tela de loading após alguns segundos
+                    setTimeout(function() {
+                        hideLoading();
+                    }, 3000);
+                });
+        }
+
+        // Função para verificar o status do pagamento
+        function verifyPayment(token) {
+            console.log('🔄 Verificando status do pagamento...');
+            
+            fetch('confirmar-pagamento.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ paymentId: token })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('📡 Resposta da verificação:', data);
+                
+                if (data.status === 'APPROVED' || data.status === 'approved') {
+                    console.log('✅ Pagamento aprovado!');
+                    // Limpar dados do pagamento salvo quando for aprovado
+                    localStorage.removeItem('savedPayment');
+                    // Mostrar notificação de sucesso
+                    toastr.success("Pagamento aprovado com sucesso!", "Pagamento Confirmado");
+                    // Redirecionar para página de agradecimento após 2 segundos
+                    setTimeout(function() {
+                        window.location.href = '/obrigado/';
+                    }, 2000);
+                } else if (data.status === 'PENDING' || data.status === 'pending') {
+                    console.log('⏳ Pagamento ainda aguardando aprovação.');
+                } else {
+                    console.log('❓ Status inesperado: ' + data.status);
+                }
+            })
+            .catch(error => {
+                console.error('❌ Erro ao verificar pagamento:', error);
+            });
+        }
+    </script>
+
+    <!-- Inclua o jQuery antes do seu script -->
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <!-- Se estiver usando o toastr, inclua-o também -->
+    <link rel="stylesheet" href="css/toastr.min.css">
+    <script src="js/toastr.min.js"></script>
+
+
+
+
+<!-- End Google Tag Manager (noscript) -->
+
+
+</body></html>
